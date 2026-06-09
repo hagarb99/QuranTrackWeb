@@ -1,0 +1,59 @@
+<div class="login-wrapper d-flex align-items-center justify-content-center">
+  <div class="card shadow-lg border-0 login-card">
+    <div class="card-body p-4">
+
+      <h4 class="text-center mb-4">Login</h4>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+        <!-- Phone -->
+        <div class="mb-3">
+          <label class="form-label">Phone</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="phone"
+            placeholder="Enter your phone"
+          />
+          <div class="text-danger small mt-1"
+               *ngIf="loginForm.get('phone')?.touched && loginForm.get('phone')?.invalid">
+            Phone is required
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            formControlName="password"
+            placeholder="Enter your password"
+          />
+          <div class="text-danger small mt-1"
+               *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
+            Password is required
+          </div>
+        </div>
+
+        <!-- Error -->
+        <div *ngIf="errorMessage"
+             class="alert alert-danger py-2">
+          {{ errorMessage }}
+        </div>
+
+        <!-- Button -->
+        <div class="d-grid">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="loginForm.invalid">
+            Login
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>
